@@ -3,22 +3,36 @@
 @section('content')
 <div class="section">
 <div class="container">
+    <login-page inline-template>
     <div class="columns is-centered">
         <div class="column is-5">
+            @errors
+            @enderrors
+
             <div class="card">
                 <div class="card-header">
-                    <div class="card-header-title">Login</div>
+                    <div class="card-header-title">Log Masuk</div>
                 </div>
                 <div class="card-content">
                 <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
                     @csrf
 
+                    <b-field>
+                        <div class="select">
+                            <select name="role" id="">
+                                <option value="student" selected="selected">Siswa</option>
+                                <option value="administrator">Pentadbir</option>
+                            </select>
+                        </div>
+                    </b-field>
+
                     <b-field label="ID Pengguna"
-                        type="{{ $errors->has('matric') ? 'is-danger' : '' }}"
-                        message="{{ $errors->first('matric') }}">
+                        type="{{ $errors->has('id') ? 'is-danger' : '' }}"
+                        message="{{ $errors->first('id') }}">
                         <b-input type="text"
-                            value="{{ old('matric') }}"
-                            name="matric">
+                            value="{{ old('id') }}"
+                            name="id"
+                            v-model="id">
                         </b-input>
                     </b-field>
 
@@ -40,9 +54,12 @@
                         </div>
                     </div>
 
+                    <input type="hidden" name="matric" v-model="id">
+                    <input type="hidden" name="email" v-model="id">
+
                     <div class="field mt-6">
                         <div class="control">
-                            <button type="submit" class="button is-primary">Login</button>
+                            <button type="submit" class="button is-primary">Log Masuk</button>
                         </div>
                     </div>
 
@@ -55,6 +72,7 @@
         
         </div>
     </div>
+    </login-page>
 </div>
 </div>
 @endsection

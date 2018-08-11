@@ -9,7 +9,9 @@ import Vue from 'vue'
 
 import Buefy from 'buefy'
 
-Vue.use(Buefy)
+Vue.use(Buefy, {
+  defaultIconPack: 'fa'
+})
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -17,7 +19,9 @@ Vue.use(Buefy)
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('login-page', require('./components/LoginPage.vue'));
+Vue.component('registration-page', require('./components/RegistrationPage.vue'));
+Vue.component('add-company', require('./components/AddCompany.vue'));
 
 const app = new Vue({
     el: '#app'

@@ -33,3 +33,6 @@ $link-focus-border: $primary;
 // Import Bulma and Buefy styles
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
+@import "~bulma-divider/src/sass/index";
+
+[v-cloak] { display:none; }

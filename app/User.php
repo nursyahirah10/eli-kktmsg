@@ -4,10 +4,15 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasRoles;
+
+    protected $appends = [
+        'registered', 'reg'
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -26,4 +31,29 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function address()
+    {
+        return $this->morphOne('App\Address', 'addressable');
+    }
+
+    public function getProfilePictureAttribute($pp)
+    {
+        return $pp ?? 'dummy.jpg';
+    }
+
+    public function registration()
+    {
+        return $this->hasMany('App\Registration');
+    }
+
+    public function getRegisteredAttribute()
+    {
+        return $this->registration->isNotEmpty();
+    }
+
+    public function getRegAttribute()
+    {
+        return $this->registration->first();
+    }
 }

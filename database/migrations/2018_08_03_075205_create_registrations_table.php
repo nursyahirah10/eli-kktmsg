@@ -17,6 +17,7 @@ class CreateRegistrationsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->string('semester');
+            $table->string('session');
             $table->timestamp('start_at')->nullable();
             $table->timestamp('end_at')->nullable();
             $table->string('period');
