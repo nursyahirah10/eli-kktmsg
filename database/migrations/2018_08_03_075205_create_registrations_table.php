@@ -22,6 +22,7 @@ class CreateRegistrationsTable extends Migration
             $table->timestamp('end_at')->nullable();
             $table->string('period');
             $table->string('status');
+            $table->string('quota')->default(3);
             $table->timestamps();
         });
     }

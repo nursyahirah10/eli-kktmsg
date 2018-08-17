@@ -12,4 +12,8 @@ class Registration extends Model
         'start_at', 'end_at'
     ];
 
+    public function companies()
+    {
+        return $this->belongsToMany('App\Company')->withPivot('status')->withTimestamps();;
+    }
 }

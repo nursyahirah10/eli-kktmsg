@@ -41,4 +41,13 @@ class RegistrationController extends Controller
 
         return back()->with('flash', 'Pendaftaran berjaya!');
     }
+
+    public function remove(Request $request)
+    {
+        $user = Auth::user();
+
+        $user->registration()->delete();
+
+        return back()->withFlash('Berjaya dibuang');
+    }
 }

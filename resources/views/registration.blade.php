@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-@if (Auth::user()->registered)
+@if (Auth::user()->registration)
 
 @notification
 @endnotification
@@ -12,22 +12,27 @@
     <tbody>
         <tr>
             <td width="50">Semester / Sesi</td>
-            <td width="50">{{ $user->reg->semester }} / {{ $user->reg->session }}</td>
+            <td width="50">{{ $user->registration->semester }} / {{ $user->registration->session }}</td>
         </tr>
         <tr>
             <td width="50">Tarikh Mula & Tamat</td>
-            <td width="50">{{ $user->reg->start_at->format('d-m-Y')  }} <span class="fa fa-arrow-right"></span> {{ $user->reg->end_at->format('d-m-Y') }}</td>
+            <td width="50">{{ $user->registration->start_at->format('d-m-Y')  }} <span class="fa fa-arrow-right"></span> {{ $user->registration->end_at->format('d-m-Y') }}</td>
         </tr>
         <tr>
             <td width="50">Tempoh</td>
-            <td width="50">{{ $user->reg->period }} Minggu</td>
+            <td width="50">{{ $user->registration->period }} Minggu</td>
         </tr>
         <tr>
             <td width="50">Status</td>
-            <td width="50"><span class="tag is-success">{{ strtoupper($user->reg->status) }}</span></td>
+            <td width="50"><span class="tag is-success">{{ strtoupper($user->registration->status) }}</span></td>
         </tr>
     </tbody>
 </table>
+
+<form action="{{ route('registration.remove') }}" method="POST">
+    @csrf
+    <button class="button is-danger">Cancel Registration</button>
+</form>
 
 @else
 <registration-page inline-template start-at="{{ old('start_at', now()) }}" end-at="{{ old('end_at', now()) }}">
@@ -57,12 +62,12 @@
             </b-field>
             
             <b-field label="Tarikh Mula">
-                <b-datepicker v-model="startAtModel" name="start_at">
+                <b-datepicker v-model="startAtModel" name="start_at" :max-date="maxDate">
                 </b-datepicker>
             </b-field>
 
             <b-field label="Tarikh Tamat">
-                <b-datepicker v-model="endAtModel" name="end_at">
+                <b-datepicker v-model="endAtModel" name="end_at" :max-date="maxDate">
                 </b-datepicker>
             </b-field>
 
@@ -76,6 +81,8 @@
         </form>            
     </div>
 </div>
+
+
 </registration-page>
 @endif
 @endsection

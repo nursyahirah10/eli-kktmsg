@@ -18,11 +18,8 @@ class CreateConstraints extends Migration
         });
 
         Schema::table('company_registration', function (Blueprint $table) {
-            $table->foreign('registration_id')->references('id')->on('registrations');
-        });
-
-        Schema::table('company_registration', function (Blueprint $table) {
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('registration_id')->references('id')->on('registrations')->onDelete('cascade');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
         });
     }
 

@@ -52,4 +52,20 @@ class LoginController extends Controller
     {
         return redirect()->route('login');
     }
+
+    /**
+     * The user has been authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        if ($user->hasRole('administrator')) {
+            return redirect()->route('admin.manage.student');
+        } else {
+            return redirect()->route('profile');
+        }
+    }
 }

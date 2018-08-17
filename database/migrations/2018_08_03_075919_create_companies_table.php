@@ -22,7 +22,7 @@ class CreateCompaniesTable extends Migration
             $table->string('fax_2')->nullable();
             $table->string('email')->nullable();
             $table->string('hr_officer')->nullable();
-            $table->string('status');
+            $table->boolean('status');
             $table->timestamps();
         });
     }
@@ -34,6 +34,8 @@ class CreateCompaniesTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
+
         Schema::dropIfExists('companies');
     }
 }

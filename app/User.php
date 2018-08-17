@@ -44,16 +44,6 @@ class User extends Authenticatable
 
     public function registration()
     {
-        return $this->hasMany('App\Registration');
-    }
-
-    public function getRegisteredAttribute()
-    {
-        return $this->registration->isNotEmpty();
-    }
-
-    public function getRegAttribute()
-    {
-        return $this->registration->first();
+        return $this->hasOne('App\Registration');
     }
 }

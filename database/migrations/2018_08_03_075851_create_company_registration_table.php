@@ -17,6 +17,7 @@ class CreateCompanyRegistrationTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('registration_id');
             $table->unsignedInteger('company_id');
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }
