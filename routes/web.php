@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::redirect('/', '/home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware(['auth'])->group(function () {
 
@@ -31,7 +32,15 @@ Route::middleware(['auth'])->group(function () {
     });
     
     Route::prefix('admin')->middleware(['role:administrator'])->group(function () {
+        Route::get('/manage/company', 'Admin\ManageCompanyController@index')->name('admin.manage.company');
+        Route::get('/manage/company/{company}/edit', 'Admin\ManageCompanyController@edit')->name('admin.manage.company.edit');
+        Route::put('/manage/company/{company}', 'Admin\ManageCompanyController@update')->name('admin.manage.company.update');
+        
         Route::get('/manage/student', 'Admin\ManageStudentController@index')->name('admin.manage.student');
+        Route::get('/manage/student/{student}', 'Admin\ManageStudentController@edit')->name('admin.manage.student.edit');
+        Route::post('/manage/student/company/{pivot}/flip', 'Admin\ManageStudentController@flip')->name('admin.company.status.flip');
+        Route::post('/manage/student/registration/{registration}/quota', 'Admin\ManageStudentController@quota')->name('admin.registration.quota');
+    
     });
     
     

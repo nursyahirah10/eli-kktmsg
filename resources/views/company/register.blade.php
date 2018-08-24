@@ -32,7 +32,7 @@
         </b-field>
 
         <input type="hidden" name="address[country]" value="Malaysia">
-        <input type="hidden" name="company[status]" value="true">
+        <input type="hidden" name="company[status]" value="false">
 
         <b-field label="Emel *">
             <b-input type="email" name="company[email]" value="{{ old('company.email') }}"></b-input>

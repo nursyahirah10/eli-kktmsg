@@ -27,4 +27,9 @@ class Address extends Model
     {
         $this->attributes['country'] = strtoupper($value);
     }
+
+    public function scopeWhereCompany($builder)
+    {
+        return $builder->where('addressable_type', 'App\Company');
+    }
 }

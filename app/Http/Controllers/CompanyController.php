@@ -21,7 +21,7 @@ class CompanyController extends Controller
         $companies = collect([]);
 
         if ($request->state || $request->city) {
-            $companies = Company::whereHas('address', function ($query) use ($request) {
+            $companies = Company::where('status', true)->whereHas('address', function ($query) use ($request) {
 
                 if (! $request->city)
                     $query->where('state', $request->state);
@@ -53,7 +53,7 @@ class CompanyController extends Controller
             'company.name' => 'required',
             'company.email' => 'required|email',
             'address.*' => 'required',
-            'company.status' => 'required|in:true,false'
+            'company.status' => 'required|boolean'
         ]);
 
         $company = Company::create($request->company);

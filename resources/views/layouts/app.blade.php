@@ -61,7 +61,7 @@
                                                 onclick="event.preventDefault();
                                                                 document.getElementById('logout-form').submit();">
                                     <span>
-                                        Logout
+                                        Log Keluar
                                     </span>
                                     </a>
 
@@ -83,6 +83,7 @@
                 <div class="container">
                     <div class="columns">
                         <div class="column is-3">
+                            @role('student')
                             <div class="image is-square mb-4">
                                 <img src="{{ asset('storage/'.Auth::user()->profile_picture) }}" alt="">
                             </div>
@@ -102,6 +103,17 @@
                                     <li><a href="{{ route('company') }}" class="{{ add_class_by_route('company') }}">Pemilihan Syarikat</a></li>
                                 </ul>
                             </aside>
+                            @else
+                            <aside class="menu">
+                                <p class="menu-label">
+                                    Pengurusan
+                                </p>
+                                <ul class="menu-list">
+                                    <li><a href="{{ route('admin.manage.student') }}" class="{{ add_class_by_route('admin.manage.student') }}">Pelajar</a></li>
+                                    <li><a href="{{ route('admin.manage.company') }}" class="{{ add_class_by_route('admin.manage.company') }}">Syarikat</a></li>
+                                </ul>
+                            </aside>
+                            @endrole
                         </div>
 
                         <div class="column is-9">
@@ -111,15 +123,11 @@
                 </div>
             </div>
             @else
-            <div class="section">
-                <div class="container">
                     @yield('content')
-                </div>
-            </div>
             @endauth
         </main>
-
-        <div class="columns is-centered mt-4">
+        @if (url()->current() != action('HomeController@index'))
+        <div class="columns is-centered mt-4 text-center">
             <div class="column is-1">
                 <img src="{{ asset('storage/mara-logo.png') }}" alt="LOGO" width="112" height="28">
             </div>
@@ -127,6 +135,7 @@
                 <img src="{{ asset('storage/kktmsg-logo.png') }}" alt="LOGO" width="112" height="28">
             </div>
         </div>
+        @endif
     </div>
 </body>
 </html>

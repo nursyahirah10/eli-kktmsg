@@ -14,6 +14,6 @@ class Registration extends Model
 
     public function companies()
     {
-        return $this->belongsToMany('App\Company')->withPivot('status')->withTimestamps();;
+        return $this->belongsToMany('App\Company')->using(CompanyRegistration::class)->withPivot(['status', 'id'])->withTimestamps();;
     }
 }

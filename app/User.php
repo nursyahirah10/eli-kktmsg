@@ -8,7 +8,33 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasRoles;
+    use Notifiable, 
+        HasRoles,
+        \Nicolaslopezj\Searchable\SearchableTrait;
+
+    /**
+     * Searchable rules.
+     *
+     * @var array
+     */
+    protected $searchable = [
+        /**
+         * Columns and their priority in search results.
+         * Columns with higher values are more important.
+         * Columns with equal values have equal importance.
+         *
+         * @var array
+         */
+        'columns' => [
+            'users.name' => 10,
+            'users.email' => 10,
+            'registrations.quota' => 9,
+            'registrations.semester' => 9,
+        ],
+        'joins' => [
+            'registrations' => ['users.id','registrations.user_id'],
+        ],
+    ];
 
     protected $appends = [
         'registered', 'reg'
