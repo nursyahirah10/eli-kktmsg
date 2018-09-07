@@ -8,7 +8,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use Notifiable, 
+    use Notifiable,
         HasRoles,
         \Nicolaslopezj\Searchable\SearchableTrait;
 

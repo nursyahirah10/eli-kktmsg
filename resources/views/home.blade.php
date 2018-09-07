@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="hero">
-    <img class="w-full" src="{{ asset('storage/Uxso9Z (2).PNG') }}" alt="">
+    <img class="w-full" src="{{ asset('storage/Uxso9Z.PNG') }}" alt="">
 </div>
 
 <div class="container">

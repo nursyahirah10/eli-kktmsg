@@ -25,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
         foreach ($this->components as $nonAlias => $alias) {
             Blade::component($nonAlias, $alias);
         }
+
+        \App::setLocale('my');
     }
 
     /**
