@@ -12,7 +12,11 @@ class ManageStudentController extends Controller
 {
     public function index(Request $request)
     {
-        $users = User::role('student')->search($request->input('query') ?? '')->get();
+        if ($request->has('programme')) {
+            $users = User::role('student')->search($request->programme, null, true, true)->get();
+        } else {
+            $users = User::role('student')->search($request->input('query') ?? '')->get();
+        }
 
         return view('admin.student.index', [
             'users' => $users

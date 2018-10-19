@@ -26,8 +26,9 @@ class User extends Authenticatable
          * @var array
          */
         'columns' => [
-            'users.name' => 10,
-            'users.email' => 10,
+            'users.programme' => 10,
+            'users.email' => 9,
+            'users.name' => 9,
             'registrations.quota' => 9,
             'registrations.semester' => 9,
         ],

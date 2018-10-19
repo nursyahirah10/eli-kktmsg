@@ -12,6 +12,7 @@
 */
 
 Route::redirect('/', '/home');
+Route::view('/test/surat', 'docs.answer');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware(['auth'])->group(function () {

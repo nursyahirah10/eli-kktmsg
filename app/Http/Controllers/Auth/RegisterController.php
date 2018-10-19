@@ -52,6 +52,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'programme' => 'required|string|in:'. implode(',', config('eli.programmes')),
             'matric' => 'required|string|max:10|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
@@ -69,6 +70,7 @@ class RegisterController extends Controller
         $user = User::create([
             'matric' => $data['matric'],
             'email' => $data['email'],
+            'programme' => $data['programme'],
             'password' => Hash::make($data['password']),
         ]);
 
