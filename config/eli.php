@@ -1,6 +1,13 @@
 <?php
 
 return [
+    'name' => 'e-li KKTM Sri Gading',
+    
+    'admin' => [
+        'email' => 'ikhwan@kktmsrigading.edu.my',
+        'password' => '285744',
+    ],
+
     'programmes' => [
         'Diploma Teknologi Forensik Bangunan & Penyelenggaraan (DTF)',
         'Diploma Teknologi Perkhidmatan Bangunan & Penyelenggaran (DTM)',

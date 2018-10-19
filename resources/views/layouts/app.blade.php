@@ -30,7 +30,7 @@
             <div class="container">
                 <div class="navbar-brand">
                     <a class="navbar-item" href="http://127.0.0.1:8000">
-                        {{ config('app.name') }}
+                        {{ config('eli.name') }}
                     </a>
                     <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
                         <span></span>

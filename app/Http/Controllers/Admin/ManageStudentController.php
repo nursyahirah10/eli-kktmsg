@@ -52,6 +52,8 @@ class ManageStudentController extends Controller
 
     public function destroy(User $student)
     {
+        $student->address()->delete();
+        $student->registration()->delete();
         $student->delete();
 
         return back()->with('flash', 'Berjaya dibuang!');
