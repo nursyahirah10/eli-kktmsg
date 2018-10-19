@@ -6,11 +6,11 @@
 <form action="{{ route('admin.manage.student') }}">
 <div class="field is-grouped">
   <p class="control is-expanded">
-        <input type="text" class="input" placeholder="Search students" name="query">
+        <input type="text" class="input" placeholder="Carian Pelajar" name="query">
     </p>
     <p class="control">
         <button class="button is-light" type="submit">
-            Search
+            Cari
         </button>
     </p>
 </div>
@@ -32,7 +32,7 @@
                 </td>
                 <td>{{ $user->email }}</td>
                 <td>
-                    <a href="{{ route('admin.manage.student.edit', $user->id) }}" class="button is-primary">Manage</a>
+                    <a href="{{ route('admin.manage.student.edit', $user->id) }}" class="button is-primary">Mengurus</a>
                 </td>
             </tr>
             @endforeach

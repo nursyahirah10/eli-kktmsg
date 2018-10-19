@@ -38,8 +38,9 @@ Pemilihan Syarikat
                 @endif
             </td>
             <td>
-                <a href="{{ route('download.letter', 'surat-maklumbalas.pdf') }}">Surat maklumbalas</a>, <br>
-                <a href="{{ route('download.letter', 'surat-permohonan.pdf') }}">Surat permohonan LI</a>
+                <a href="{{ route('download.letter', 'BORANG JAWAPAN PENEMPATAN LI KKTM SRI GADING.pdf') }}">Surat maklumbalas</a>, <br>
+                <a href="{{ route('download.letter', 'BORANG PERMOHONAN PENEMPATAN LI KKTM SRI GADING.pdf') }}">Surat permohonan LI</a>
+                
             </td>
         </tr>
         @endforeach
