@@ -49,4 +49,11 @@ class ManageStudentController extends Controller
 
         return back()->with('flash', 'Kemaskini berjaya!');
     }
+
+    public function destroy(User $student)
+    {
+        $student->delete();
+
+        return back()->with('flash', 'Berjaya dibuang!');
+    }
 }

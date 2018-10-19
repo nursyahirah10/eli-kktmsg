@@ -37,4 +37,11 @@ class ManageCompanyController extends Controller
 
         return redirect()->route('admin.manage.company.edit', $company->id)->with('flash', 'Kemaskini Syarikat Berjaya.');
     }
+
+    public function destroy(Company $company)
+    {
+        $company->delete();
+
+        return back()->with('flash', 'Berjaya dibuang!');
+    }
 }

@@ -3,6 +3,8 @@
 @section('content')
 
 <div class="title is-5">Mengurus Syarikat</div>
+
+<company-index inline-template>
 <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
     <thead>
         <tr>
@@ -23,9 +25,11 @@
             </td>
             <td>
                 <a href="{{ route('admin.manage.company.edit', $company->id) }}" class="button">Kemaskini</a>
+                <button class="button is-danger" @click="deleteCompany('{{ $company->id }}')"><i class="fa fa-times"></i></button>
             </td>
         </tr>
         @endforeach
     </tbody>
 </table>
+</company-index>
 @endsection

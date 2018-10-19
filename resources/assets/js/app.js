@@ -14,6 +14,10 @@ Vue.use(Buefy, {
   defaultIconPack: 'fa'
 })
 
+window.swal = require('sweetalert2')
+
+import 'sweetalert2/src/sweetalert2.scss'
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -23,6 +27,8 @@ Vue.use(Buefy, {
 Vue.component('login-page', require('./components/LoginPage.vue'));
 Vue.component('registration-page', require('./components/RegistrationPage.vue'));
 Vue.component('add-company', require('./components/AddCompany.vue'));
+Vue.component('student-index', require('./components/admin/StudentIndex.vue'));
+Vue.component('company-index', require('./components/admin/CompanyIndex.vue'));
 
 const app = new Vue({
     el: '#app'
