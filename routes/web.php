@@ -29,7 +29,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/company/register', 'CompanyController@registerCompany')->name('company.register');
         Route::post('/company/register', 'CompanyController@store');
         Route::post('/company/assign', 'CompanyController@assign')->name('company.assign');
-        Route::get('/download/letter/{name}', 'DownloadController@download')->name('download.letter');
+
+        Route::get('/download/letter/permohonan/{company}', 'DownloadController@permohonan')->name('download.letter.permohonan');
+        Route::get('/download/letter/jawapan', 'DownloadController@jawapan')->name('download.letter.jawapan');
     });
     
     Route::prefix('admin')->middleware(['role:administrator'])->group(function () {

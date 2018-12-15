@@ -4,6 +4,16 @@
 
 <div class="title is-5">Mengurus Syarikat</div>
 
+<b-dropdown class="mb-6" v-cloak>
+    <button class="button is-primary" slot="trigger">
+        <span>Negeri</span>
+    </button>
+
+    @foreach ($addresses as $add)
+    <b-dropdown-item href="{{ route('admin.manage.company') }}?state={{ $add->state }}">{{ $add->state }}</b-dropdown-item>
+    @endforeach
+</b-dropdown>
+
 <company-index inline-template>
 <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
     <thead>
