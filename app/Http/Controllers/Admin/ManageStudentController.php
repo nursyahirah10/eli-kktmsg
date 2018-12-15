@@ -7,19 +7,23 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\CompanyRegistration;
 use App\Registration;
+use Spatie\QueryBuilder\QueryBuilder;
+use Spatie\QueryBuilder\Filter;
+use App\Filters\BySession;
 
 class ManageStudentController extends Controller
 {
     public function index(Request $request)
     {
-        if ($request->has('programme')) {
-            $users = User::role('student')->search($request->programme, null, true, true)->get();
-        } else {
-            $users = User::role('student')->search($request->input('query') ?? '')->get();
-        }
+        $users = QueryBuilder::for(User::class)
+        ->allowedFilters(['programme', Filter::custom('session', BySession::class)])
+        ->role('student')
+        ->search($request->input('query') ?? '')
+        ->get();
 
         return view('admin.student.index', [
-            'users' => $users
+            'users' => $users,
+            'sessions' => Registration::groupBy('session')->get()
         ]);
     }
 
