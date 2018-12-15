@@ -25,7 +25,7 @@
                     No. tel: 07-453 2571
                 </p>
                 <p>
-                    Fax: 07-453 2513
+                    No. Fax: 07-453 2513
                 </p>
                 <p>
                     Emel: info@kktmsrigading.edu.my

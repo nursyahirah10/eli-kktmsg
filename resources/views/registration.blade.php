@@ -31,7 +31,7 @@
 
 <form action="{{ route('registration.remove') }}" method="POST">
     @csrf
-    <button class="button is-danger">Cancel Registration</button>
+    <button class="button is-danger">Batalkan Pendaftaran</button>
 </form>
 
 @else
