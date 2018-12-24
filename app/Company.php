@@ -26,4 +26,11 @@ class Company extends Model
     {
         $this->attributes['status'] = (boolean) $value;
     }
+
+    public function scopeByState($query, $value)
+    {
+        return $query->whereHas('address', function ($q) use ($value) {
+            $q->where('state', 'LIKE', "%$value%");
+        });
+    }
 }

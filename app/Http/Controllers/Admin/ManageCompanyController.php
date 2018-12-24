@@ -5,13 +5,21 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Company;
+use Spatie\QueryBuilder\QueryBuilder;
+use App\Address;
 
 class ManageCompanyController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $companies = QueryBuilder::for(Company::class)
+        ->byState($request->input('state') ?? '')
+        ->get();
+
+
         return view('admin.company.index', [
-            'companies' => Company::all()
+            'addresses' => Address::where('addressable_type', 'App\Company')->groupBy('state')->get(),
+            'companies' => $companies
         ]);
     }
 

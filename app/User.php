@@ -30,7 +30,7 @@ class User extends Authenticatable
             'users.email' => 9,
             'users.name' => 9,
             'registrations.quota' => 9,
-            'registrations.semester' => 9,
+            'registrations.session' => 9,
         ],
         'joins' => [
             'registrations' => ['users.id','registrations.user_id'],

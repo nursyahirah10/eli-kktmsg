@@ -24,7 +24,17 @@
     </button>
 
     @foreach (config('eli.programmes') as $item)
-    <b-dropdown-item href="{{ route('admin.manage.student') }}?programme={{ $item }}">{{ $item }}</b-dropdown-item>
+    <b-dropdown-item href="{{ route('admin.manage.student') }}?filter[programme]={{ $item }}">{{ $item }}</b-dropdown-item>
+    @endforeach
+</b-dropdown>
+
+<b-dropdown class="mt-6 mb-6" v-cloak>
+    <button class="button is-primary" slot="trigger">
+        <span>Sesi</span>
+    </button>
+
+    @foreach ($sessions as $session)
+    <b-dropdown-item href="{{ route('admin.manage.student') }}?filter[session]={{ $session->session }}">{{ $session->session }}</b-dropdown-item>
     @endforeach
 </b-dropdown>
 
@@ -36,7 +46,7 @@
                 <tr>
                     <th>Nama</th>
                     <th>Emel</th>
-                    <th>Programme</th>
+                    <th>Program</th>
                     <th>Tindakan</th>
                 </tr>
             </thead>
@@ -52,7 +62,6 @@
                         @if ($user->registration)
                         <a href="{{ route('admin.manage.student.edit', $user->id) }}" class="button is-primary">Mengurus</a>                    @else
                         <a class="button is-primary" disabled>Mengurus</a> @endif
-                        <button class="button is-danger" @click="deleteStudent('{{ $user->id }}')"><i class="fa fa-times"></i></button>
                     </td>
                 </tr>
                 @endforeach
