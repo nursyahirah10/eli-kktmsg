@@ -12,6 +12,13 @@ class Company extends Model
         'status' => 'boolean'
     ];
 
+    protected static function boot()
+    {
+        static::deleting(function($model) {
+            $model->address->delete();
+        });
+    }
+
     public function address()
     {
         return $this->morphOne('App\Address', 'addressable');

@@ -24,7 +24,7 @@ class DownloadController extends Controller
         // add a page
         $pdf->AddPage();
         // set the source file
-        $pdf->setSourceFile(Storage::disk('public')->path('SURAT PERMOHONAN PENEMPATAN LI KKTM SRI GADING PT RAJA.pdf'));
+        $pdf->setSourceFile(Storage::disk('public')->path('SURAT PERMOHONAN PENEMPATAN LI KKTM SRI GADING.pdf'));
         // import page 1
         $tplIdx = $pdf->importPage(1);
 
@@ -34,8 +34,8 @@ class DownloadController extends Controller
         $user = Auth::user();
         $pdf = $this->setText(
             $pdf,
-            170, 
-            59, 
+            150, 
+            46, 
             $user
             ->registration
             ->companies
@@ -53,16 +53,20 @@ class DownloadController extends Controller
          }
          
         $address = $company->address;
-        $pdf = $this->setText($pdf, 27, 65, $company->name);
-        $pdf = $this->setText($pdf, 27, 69, ucwords(strtolower(clean($address->address))));
-        $pdf = $this->setText($pdf, 27, 73, ucwords(strtolower("{$address->postcode}, {$address->city}, {$address->state}")));
-        $pdf = $this->setText($pdf, 27, 77, ucwords(strtolower($address->country)));
-        $pdf = $this->setText($pdf, 32, 81, $company->no_1);
-        $pdf = $this->setText($pdf, 32, 85, $company->fax_1);
-        $pdf = $this->setText($pdf, 52, 110, ucwords($user->name));
-        $pdf = $this->setText($pdf, 52, 113, strtoupper($user->matric));
-        $pdf = $this->setText($pdf, 52, 116, $user->programme);
-        $pdf = $this->setText($pdf, 52, 119, '6 BULAN');
+        $registrations = $user;
+        $pdf = $this->setText($pdf, 20, 53, $company->name);
+        $pdf = $this->setText($pdf, 20, 60, ucwords(strtolower(clean($address->address))));
+        $pdf = $this->setText($pdf, 20, 70, ucwords(strtolower("{$address->postcode}, {$address->city}, {$address->state}")));
+        $pdf = $this->setText($pdf, 20, 77, ucwords(strtolower($address->country)));
+        $pdf = $this->setText($pdf, 30, 143, ucwords($user->name));
+        $pdf = $this->setText($pdf, 30, 146, strtoupper($user->matric));
+        $pdf = $this->setText($pdf, 126, 143, $user->programme);
+        $pdf = $this->setText($pdf, 90, 143, $user->ic);
+        $pdf = $this->setText($pdf, 45, 103, $user->registration->session);
+        $pdf = $this->setText($pdf, 70, 124, $user->registration->start_at->format('d/m/Y'));
+        $pdf = $this->setText($pdf, 105, 124, $user->registration->end_at->format('d/m/Y'));
+        $pdf = $this->setText($pdf, 20, 143, '1');
+
 
         return $pdf->Output();
     }
