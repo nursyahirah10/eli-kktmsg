@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-header-title">
-                        Tukar password
+                        Tukar Katalaluan
                     </div>
                 </div>
                 <div class="card-content">
